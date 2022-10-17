@@ -77,6 +77,7 @@ width: 100%;
 }
 
 .navigation{
+    position: relative;
 display: block;
  padding-top: 32px;
 padding-bottom: 32px;
@@ -86,19 +87,36 @@ letter-spacing: 0.02em;
 color:var(--main-color);
 text-decoration: none;
 list-style-type: none;
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .navigation:hover,
 .navigation:focus{
     color: var(--accent-color);
+}
+
+.navigation::before{
+    content:'';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width:100%;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+    opacity: 0;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.navigation:hover::before{
+    opacity: 1;
 }
 .active-nav{
 color: var(--accent-color);
 position: relative;
 }
 .active-nav::after{
-    content: "";
+    content: '';
     position: absolute;
-    bottom: -1px;
+    bottom: -2px;
     left: 0;
     width:100%;
     height: 4px;
@@ -122,6 +140,7 @@ gap: 30px;
     font-weight: 500;
     line-height: 1.14;
     letter-spacing: 0.02em;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contact:hover,
 .contact:focus{
@@ -169,6 +188,7 @@ gap: 30px;
     min-width: 216px;
     border-radius: 4px;
     padding: 10px 32px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     
 }
 .hero-btn:hover,
@@ -316,6 +336,7 @@ background: rgba(47, 48, 58, 0.8);
     align-items: center;
     border-radius: 50%;
     color: #AFB1B8;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .network-item:hover,
 .network-item:focus{
@@ -349,6 +370,7 @@ justify-content: space-between;
    border: 1px solid #AFB1B8;
 border-radius: 4px;
 color: #AFB1B8;
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .customer-link:hover,
 .customer-link:focus{
@@ -357,7 +379,6 @@ color: #AFB1B8;
 }
 .customer-icon{
     fill:currentColor;
-
 }
 
 .footer{
@@ -395,6 +416,7 @@ color: #AFB1B8;
 }
 .footer-contact{
     opacity: .6;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-contact:hover,
 .footer-contact:focus{
@@ -421,6 +443,7 @@ color: var(--contrast-color);
     background-color: rgba(255, 255, 255, 0.1);
     color: var(--contrast-color);
     border-radius: 50%;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .join-link:hover,
 .join-link:focus{
@@ -440,7 +463,6 @@ color: var(--contrast-color);
     gap: 8px;
 }
 .menu-list-button{
-
     background-color: var(--section-color);
     color: var(--main-color);
     font-weight: 500;
@@ -454,10 +476,10 @@ color: var(--contrast-color);
     letter-spacing: 0.03em;
     padding: 6px 25px;
     border-radius: 4px;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .menu-list-button:hover,
-.menu-list-button:focus,
-.menu-list-button:active{
+.menu-list-button:focus{
     background-color: var(--accent-color);
     color: var(--contrast-color);
      box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
@@ -478,6 +500,7 @@ color: var(--contrast-color);
 .card-link{
     text-decoration: none;
     display: block;
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .card-link:hover,
 .card-link:focus{
@@ -513,7 +536,7 @@ color: var(--contrast-color);
     width: 100%;
     position: absolute;
     left:0;
-    top: 294px;
+    top: 0;
     font-size: 18px;
     line-height: 1.56;
     letter-spacing: 0.03em;
@@ -521,12 +544,12 @@ color: var(--contrast-color);
     background-color: var(--accent-color);
     padding: 63px 24px;
     opacity: 0.9;
-    transform: translateY(0);
+    transform: translateY(294px);
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1); 
-
-    }
-.card-link:hover .animation-text{
-transform: translateY(-294px);
+ }
+.card-animation:hover .animation-text,
+.card-animation:focus .animation-text{
+transform: translateY(0);
 }
 .backdrop{
     background-color: rgba(0, 0, 0, 0.2);
@@ -536,6 +559,8 @@ transform: translateY(-294px);
     width: 100%;
     height: 100%;
     z-index: 3;
+    opacity: 1;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1); 
 }
 .backdrop.is-hidden{
 opacity: 0;
@@ -553,6 +578,7 @@ pointer-events: none;
     width: 528px;
     height: 571px;
     background-color: var(--contrast-color);
+    
 }
 .close-modal{
     display: flex;
